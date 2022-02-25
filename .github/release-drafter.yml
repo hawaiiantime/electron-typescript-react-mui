@@ -14,6 +14,18 @@ categories:
     labels:
       - "chore"
       - "refactor"
+autolabeler:
+  - label: "enhancement"
+    branch:
+      - '/feat\/.+/'
+  - label: "bug"
+    branch:
+      - '/fix\/.+/'
+    title:
+      - "/fix/i"
+  - label: "chore"
+    branch:
+      - '/chore\/.+/'
 change-title-escapes: '\<*_&'
 exclude-labels:
   - "exclude from changelog"
