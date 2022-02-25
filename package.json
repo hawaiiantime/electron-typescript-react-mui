@@ -14,6 +14,7 @@
     "build:run": "npm-run-all build start:electron",
     "build:electron": "webpack --config webpack/electron.webpack.ts --mode=production",
     "build:react": "webpack --config webpack/react.webpack.ts --mode=production",
+    "bump": "npm version patch",
     "package": "npm-run-all build package:dist",
     "package:dir": "electron-builder --dir",
     "package:dist": "electron-builder"
