@@ -10,8 +10,15 @@ on:
 jobs:
   update_release_draft:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.get_release.outputs.upload_url }}
     steps:
       - uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get release
+        id: get_release
+        uses: jossef/action-latest-release-info@v1.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   upload_artifacts:
@@ -19,20 +26,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest]
+        os: [windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - run: npm install
-      - run: npm run package
+      - name: Upload release binary
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v2.3.1
         with:
-          path: |
-            packages/*.exe
-            packages/*.dmg
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          upload_url: ${{ needs.update_release_draft.outputs.outputs1 }}
+          asset_path: ./index.html.zip
