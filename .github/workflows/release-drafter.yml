@@ -34,5 +34,6 @@ jobs:
           upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
           asset_path: ./index.html.zip
           asset_name: index.html.zip
+          asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
