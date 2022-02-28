@@ -28,11 +28,12 @@ jobs:
       matrix:
         os: [windows-latest]
     steps:
-      - uses: actions/checkout@v2
-      - name: Upload release binary
-        uses: actions/upload-release-asset@v1.0.2
-        with:
-          upload_url: ${{ needs.update_release_draft.outputs.outputs1 }}
-          asset_path: ./index.html.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo ${{ needs.update_release_draft.outputs.outputs1 }}
+      # - uses: actions/checkout@v2
+      # - name: Upload release binary
+      #   uses: actions/upload-release-asset@v1.0.2
+      #   with:
+      #     upload_url: ${{ needs.update_release_draft.outputs.outputs1 }}
+      #     asset_path: ./index.html.zip
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
