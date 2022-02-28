@@ -28,7 +28,7 @@ jobs:
         uses: bhowell2/github-substring-action@v1.0.0
         id: version_number
         with:
-          value: ${{ steps.latest_release_info.outputs.tag_name }}
+          value: "v1.0.0"
           index_of_str: "v"
       - name: Upload release binary
         uses: actions/upload-release-asset@v1.0.2
