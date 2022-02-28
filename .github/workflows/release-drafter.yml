@@ -33,6 +33,6 @@ jobs:
       - uses: Roang-zero1/github-upload-release-artifacts-action@v2.1.0
         with:
           args:
-            - index.html.zip
+            - "index.html.zip"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
