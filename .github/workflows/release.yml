@@ -1,11 +1,11 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - "v[0-9].[0-9]+.[0-9]+"
-  release:
-    types: [published]
+  # push:
+  #   tags:
+  #     - "v[0-9].[0-9]+.[0-9]+"
+  pull_request:
+    types: [synchronize]
 
 jobs:
   release_with_artifacts:
