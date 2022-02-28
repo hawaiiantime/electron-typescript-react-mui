@@ -66,8 +66,8 @@ jobs:
         uses: actions/upload-release-asset@v1.0.2
         with:
           upload_url: ${{ steps.release_info.outputs.upload_url }}
-          asset_path: ./packages/LaLaLa-${{ steps.version_number.outputs.substring }}-arm64.dmg
-          asset_name: LaLaLa_${{ steps.release_info.outputs.tag_name }}-arm64.dmg
+          asset_path: ./packages/LaLaLa-${{ steps.version_number.outputs.substring }}.dmg
+          asset_name: LaLaLa_${{ steps.release_info.outputs.tag_name }}.dmg
           asset_content_type: application/octet-stream
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
