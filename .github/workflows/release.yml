@@ -17,18 +17,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 16.x
+      # - run: npm install
+      # - run: npm run package
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: substring-action
+        uses: bhowell2/github-substring-action@v1.0.0
+        id: version_number
         with:
-          node-version: 16.x
-      - run: npm install
-      - run: npm run package
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          value: ${{ steps.latest_release_info.outputs.tag_name }}
+          index_of_str: "v"
       - name: Upload release binary
         uses: actions/upload-release-asset@v1.0.2
         with:
           upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
-          asset_path: packages/LaLaLa ${{ steps.latest_release_info.outputs.tag_name }}.exe
+          # asset_path: ./packages_test/LaLaLa Setup ${{ steps.latest_release_info.outputs.tag_name }}.exe
+          asset_path: ./packages_test/LaLaLa Setup ${{ steps.version_number.outputs.substring }}.exe
           asset_name: lalala_setup_${{ steps.latest_release_info.outputs.tag_name }}.exe
           asset_content_type: application/x-msdownload
         env:
