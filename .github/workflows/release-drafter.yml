@@ -19,20 +19,22 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest]
+        os: [windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - run: npm install
-      - run: npm run package
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 16.x
+      # - run: npm install
+      # - run: npm run package
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2.3.1
         with:
           path: |
-            packages/*.exe
-            packages/*.dmg
+            index.html.zip
+          # path: |
+          #   packages/*.exe
+          #   packages/*.dmg
         # env:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
