@@ -18,7 +18,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get release
         id: get_release
-        uses: bruceadams/get-release@v1.2.2
+        uses: jossef/action-latest-release-info@v1.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   upload_artifacts:
