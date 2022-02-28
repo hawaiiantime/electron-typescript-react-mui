@@ -1,4 +1,4 @@
-name: Release Drafter
+name: Draft next release
 
 on:
   push:
@@ -13,26 +13,5 @@ jobs:
     steps:
       - uses: release-drafter/release-drafter@v5
         env:
+          # Due to the limitation of GitHub workflows, need to use a personal access token to trigger the event for tag creation.
           GITHUB_TOKEN: ${{ secrets.PAT }}
-  # upload_artifacts:
-  #   needs: update_release_draft
-  #   runs-on: ${{ matrix.os }}
-  #   strategy:
-  #     matrix:
-  #       os: [windows-latest]
-  #   steps:
-  #     - name: Get release
-  #       id: latest_release_info
-  #       uses: jossef/action-latest-release-info@v1.2.0
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #     - uses: actions/checkout@v2
-  #     - name: Upload release binary
-  #       uses: actions/upload-release-asset@v1.0.2
-  #       with:
-  #         upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
-  #         asset_path: ./index.html.zip
-  #         asset_name: index.html.zip
-  #         asset_content_type: application/zip
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
