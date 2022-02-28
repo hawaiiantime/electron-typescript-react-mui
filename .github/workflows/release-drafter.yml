@@ -29,12 +29,10 @@ jobs:
       # - run: npm run package
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v2.3.1
+      # - uses: actions/upload-artifact@v2.3.1
+      - uses: Roang-zero1/github-upload-release-artifacts-action@v2.1.0
         with:
-          path: |
-            index.html.zip
-          # path: |
-          #   packages/*.exe
-          #   packages/*.dmg
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          args:
+            - index.html.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
