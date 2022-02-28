@@ -1,6 +1,6 @@
 # Electron, TypeScript, MUI (formerly Material-UI), React Boilerplate
 
-Modern and lightweight boilerplate built with electron, typescript, react, webpack, and mui. This also demonstrates live-reloading and static images...
+Modern and lightweight boilerplate built with electron, typescript, react, webpack, and mui. This also demonstrates live-reloading and static images....
 
 ## Major technologies
 
